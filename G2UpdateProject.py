@@ -42,6 +42,33 @@ files_to_remove = [
     os.path.join('python', 'demo', 'ofac', 'cust.json'),
     os.path.join('python', 'demo', 'ofac', 'ofac.json'),
     os.path.join('python', 'demo', 'ofac', 'project.json'),
+    os.path.join('resources', 'config', 'g2core-config-upgrade-1.9-to-1.10.gtc'),
+    os.path.join('resources', 'config', 'g2core-config-upgrade-1.10-to-1.10.1.gtc'),
+    os.path.join('resources', 'config', 'g2core-config-upgrade-1.10-to-1.11.gtc'),
+    os.path.join('resources', 'config', 'g2core-config-upgrade-1.10.1-to-1.11.2.gtc'),
+    os.path.join('resources', 'config', 'g2core-config-upgrade-1.11-to-1.11.2.gtc'),
+    os.path.join('resources', 'config', 'g2core-config-upgrade-1.11.2-to-1.12.gtc'),
+    os.path.join('resources', 'config', 'g2core-config-upgrade-1.12-to-1.13.gtc'),
+    os.path.join('resources', 'config', 'g2core-config-upgrade-1.13-to-1.14.gtc'),
+    os.path.join('resources', 'config', 'g2core-config-upgrade-1.14-to-1.15.gtc'),
+    os.path.join('resources', 'config', 'g2core-config-upgrade-1.15-to-2.0.gtc'),
+    os.path.join('resources', 'config', 'g2core-config-upgrade-2.0-to-2.5.gtc'),
+]
+paths_to_move = [
+    (os.path.join('sdk', 'python'), os.path.join('sdk', 'python_prior_to_3.0')),
+    (os.path.join('python', 'demo', 'truth'), os.path.join('python', 'demo', 'truth_prior_to_3.0')),
+]
+files_to_move = [
+    ('G2Config.py', os.path.join('python'), os.path.join('python', 'prior_to_3.0')),
+    ('G2ConfigMgr.py', os.path.join('python'), os.path.join('python', 'prior_to_3.0')),
+    ('G2Diagnostic.py', os.path.join('python'), os.path.join('python', 'prior_to_3.0')),
+    ('G2Engine.py', os.path.join('python'), os.path.join('python', 'prior_to_3.0')),
+    ('G2Exception.py', os.path.join('python'), os.path.join('python', 'prior_to_3.0')),
+    ('G2Hasher.py', os.path.join('python'), os.path.join('python', 'prior_to_3.0')),
+    ('G2Health.py', os.path.join('python'), os.path.join('python', 'prior_to_3.0')),
+    ('G2IniParams.py', os.path.join('python'), os.path.join('python', 'prior_to_3.0')),
+    ('G2Product.py', os.path.join('python'), os.path.join('python', 'prior_to_3.0')),
+    ('g2purge.umf', os.path.join('python'), os.path.join('python', 'prior_to_3.0')),
 ]
 symlinks = [
     os.path.join(senzing_path, 'data')
@@ -195,6 +222,13 @@ if __name__ == '__main__':
         except (FileNotFoundError, OSError):
             # ok if file doesn't exist or the folder is not empty
             pass
+
+    for p in paths_to_move:
+        shutil.move(os.path.join(target_path, p[0]), os.path.join(target_path, p[1]))
+
+    for f in files_to_move:
+        os.makedirs(os.path.join(target_path,f[2]), exist_ok=True)
+        shutil.copyfile(os.path.join(target_path, f[1], f[0]), os.path.join(target_path, f[2], f[0]))
 
     # Remove JRE (if it exists)
     jre_to_remove = None
