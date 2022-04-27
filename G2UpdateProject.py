@@ -267,8 +267,11 @@ if __name__ == '__main__':
 
     # soft link in data
     try:
-        if os.path.exists(os.path.join(target_path, 'data')):
-            os.remove(os.path.join(target_path, 'data'))
+        os.remove(os.path.join(target_path, 'data'))
+    except (FileNotFoundError, OSError):
+        pass
+
+    try:        
         os.symlink('/opt/senzing/data/3.0.0', os.path.join(target_path, 'data'))
     except Exception as e:
         print(e)
