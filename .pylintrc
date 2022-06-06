@@ -1,0 +1,21 @@
+[pylint]
+disable=
+    bare-except,
+    broad-except,
+    consider-using-f-string,
+    dangerous-default-value,
+    invalid-name,
+    line-too-long,
+    missing-function-docstring,
+    missing-module-docstring,
+    redefined-builtin,
+    redefined-outer-name,
+    trailing-whitespace,
+    unspecified-encoding,
+    unused-import,
+good-names=
+    template-python
+ignore=
+    __init__.py,
+notes=
+    FIXME,
