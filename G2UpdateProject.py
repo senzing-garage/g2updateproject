@@ -325,7 +325,6 @@ if __name__ == '__main__':
     os.chmod(os.path.join(target_path, 'python', 'G2Loader.py'), 0o770)
     os.chmod(os.path.join(target_path, 'python', 'G2SetupConfig.py'), 0o770)
     os.chmod(os.path.join(target_path, 'python', 'G2Snapshot.py'), 0o770)
-    os.chmod(os.path.join(target_path, 'python', 'SenzingGo.py'), 0o770)
 
     # resources
     set_permissions_on_files_in_folder_recursive(os.path.join(target_path, 'resources'), 0o660)
