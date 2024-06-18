@@ -14,7 +14,8 @@ try:
 except:
     import ConfigParser as configparser
 
-senzing_path = '/opt/senzing/g2'
+# senzing_path on normal rpm/deb install = /opt/senzing/sz
+senzing_path = pathlib.Path(__file__).resolve().parents[1]
 files_to_exclude = ['G2CreateProject.py', 'G2UpdateProject.py']
 paths_to_remove = [
     os.path.join('extras', 'poc'),
