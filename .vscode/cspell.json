@@ -2,26 +2,26 @@
   "version": "0.2",
   "language": "en",
   "words": [
+    "analysing",
     "CCLA",
     "CODEOWNER",
-    "ICLA",
-    "RESOURCEPATH",
-    "Senzing",
-    "analysing",
     "configfile",
+    "cooldown",
     "cust",
     "esbenp",
+    "ICLA",
+    "kernelsam",
     "libg",
     "libpostal",
     "ofac",
     "pydev",
     "pylint",
+    "RESOURCEPATH",
+    "Senzing",
     "shellcheck",
     "stackoverflow",
     "topdown",
     "updateproject"
   ],
-  "ignorePaths": [
-    ".git/**"
-  ]
+  "ignorePaths": [".git/**"]
 }
